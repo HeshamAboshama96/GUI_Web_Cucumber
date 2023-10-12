@@ -37,7 +37,6 @@ jobs:
         if: runner.os != 'Windows'
         continue-on-error: true
         run: |
-          cd GUI_Web_Cucumber/
           if [ "$RUNNER_OS" == "Linux" ]; then
                mvn test -DexecutionAddress="localhost:4444" -DtargetOperatingSystem="Linux" -DmaximumPerformanceMode="2" -DtargetBrowserName="GoogleChrome" -DgenerateAllureReportArchive="true"
           elif [ "$RUNNER_OS" == "macOS" ]; then
@@ -50,7 +49,6 @@ jobs:
         if: runner.os == 'Windows'
         continue-on-error: true
         run: |
-          cd GUI_Web_Cucumber/
           mvn test -DexecutionAddress="local" -DtargetOperatingSystem="Windows" -DmaximumPerformanceMode="2" -DtargetBrowserName="MicrosoftEdge" -DgenerateAllureReportArchive="true"
 
       - name: Upload Allure Report as Pipeline Artifact
